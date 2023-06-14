@@ -6,6 +6,7 @@ node {
             string('-v /root/.m2:/root/.m2')
         ]) 
         sh 'echo "Hello Build"'
+        sh 'mvn -B -DskipTests clean package'
     }
     stage('Test') {
             sh 'echo "Hello Test"'
