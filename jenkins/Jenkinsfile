@@ -1,9 +1,5 @@
 node {
-    stage('Build') {
-        checkout scm
-        docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye')
-        withMaven {
-            sh "mvn clean verify"
-        }
+    docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye').inside {
+        sh 'mvn -B -DskipTests clean package'
     }
 }
