@@ -3,11 +3,14 @@ node {
     docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye')
     stage('Build') {
         sh 'echo "Hello Build"'
+        sh 'mvn -B -DskipTests clean package'
     }
     stage('Test') {
             sh 'echo "Hello Test"'
+            sh 'mvn test'
     }
     stage('Deliver') {
-            sh 'echo "Hello deliverrr"'
+            sh 'echo "Hello deliver"'
+            sh './jenkins/scripts/deliver.sh'
     }
 }
