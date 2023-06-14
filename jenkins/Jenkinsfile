@@ -2,7 +2,9 @@ node {
     stage('Build') {
         checkout scm
         docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye')
-        args '-v /root/.m2:/root/.m2'
+        parameter([
+            string('-v /root/.m2:/root/.m2')
+        ]) 
         sh 'echo "Hello Build"'
     }
     stage('Test') {
