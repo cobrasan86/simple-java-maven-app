@@ -1,6 +1,6 @@
 node {
     checkout scm
-    docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye').inside('-v /root/.m2:/root/.m2') {
+    docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye').inside("-v /root/.m2:/root/.m2") {
         sh 'hello'
     }
     stage('Build') {
