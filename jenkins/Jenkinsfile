@@ -1,5 +1,8 @@
 node {
     docker.image('maven:3.9.2-amazoncorretto-8-debian-bullseye').inside {
+        sh 'pull image'
+    }
+    stage('Build') {
         sh 'mvn -B -DskipTests clean package'
     }
 }
